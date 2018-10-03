@@ -47,7 +47,7 @@ public class Unification {
                             )
                     );
                 }
-                return sigma;
+                return sigma.simplify();
             } else {
                 throw new NotUnifiableException();
             }

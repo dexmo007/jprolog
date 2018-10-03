@@ -1,6 +1,7 @@
 package com.dexmohq.prolog.model;
 
 import lombok.NonNull;
+import lombok.ToString;
 import lombok.Value;
 
 @Value

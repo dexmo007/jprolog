@@ -30,18 +30,18 @@ public class SelfTest_1_5 {
 
         System.out.println();
 
-        t1 = new Structure("p",
-                new Structure("f", new Structure("g", X)),
-                Y,
-                X
-        );
-        t2 = new Structure("p",
-                Z,
-                new Structure("h", X),
-                new Structure("i", Z)
-        );
-        System.out.println("2.)");
-        unifyAndPrintResult(t1, t2);
+//        t1 = new Structure("p",
+//                new Structure("f", new Structure("g", X)),
+//                Y,
+//                X
+//        );
+//        t2 = new Structure("p",
+//                Z,
+//                new Structure("h", X),
+//                new Structure("i", Z)
+//        );
+//        System.out.println("2.)");
+//        unifyAndPrintResult(t1, t2);
     }
 
     private static void unifyAndPrintResult(Term t1, Term t2) {

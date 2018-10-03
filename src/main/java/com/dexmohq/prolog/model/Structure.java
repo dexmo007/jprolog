@@ -11,6 +11,7 @@ import static java.util.stream.Collectors.joining;
 @AllArgsConstructor
 public class Structure implements Term {
 
+    @NonNull
     String functor;
 
     @NonNull
@@ -26,6 +27,10 @@ public class Structure implements Term {
         this.components = new Term[terms.length + 1];
         this.components[0] = term;
         System.arraycopy(terms, 0, this.components, 1, terms.length);
+    }
+
+    public int arity() {
+        return components.length;
     }
 
     @Override
