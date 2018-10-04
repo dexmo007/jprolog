@@ -1,6 +1,7 @@
 package com.dexmohq.prolog.substitution;
 
 import com.dexmohq.prolog.model.Term;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -11,6 +12,7 @@ import static java.util.stream.Collectors.joining;
 
 @RequiredArgsConstructor
 @Getter
+@EqualsAndHashCode
 public class MultiSubstitution implements Substitution {
 
     private final Set<SingleSubstitution> substitutions;

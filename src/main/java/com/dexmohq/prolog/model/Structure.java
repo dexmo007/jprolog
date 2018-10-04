@@ -1,21 +1,20 @@
 package com.dexmohq.prolog.model;
 
-import lombok.AllArgsConstructor;
-import lombok.NonNull;
-import lombok.Value;
+import lombok.*;
 
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;
 
-@Value
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@EqualsAndHashCode
 public class Structure implements Term {
 
     @NonNull
-    String functor;
+    private final String functor;
 
     @NonNull
-    Term[] components;
+    private final Term[] components;
 
     public Structure(String functor, Term term) {
         this.functor = functor;
@@ -54,4 +53,5 @@ public class Structure implements Term {
                         .collect(joining(","))
                 + ")";
     }
+
 }
