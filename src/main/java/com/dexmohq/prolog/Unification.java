@@ -17,18 +17,10 @@ public class Unification {
             return Substitution.none();
         }
         if (t1 instanceof Variable) {
-            if (!t2.contains((Variable) t1)) {
-                return new SingleSubstitution((Variable) t1, t2);
-            } else {
-                throw new NotUnifiableException();
-            }
+            return createSingleSubstitutionIfNotContained(t2, (Variable) t1);
         }
         if (t2 instanceof Variable) {
-            if (!t1.contains((Variable) t2)) {
-                return new SingleSubstitution((Variable) t2, t1);
-            } else {
-                throw new NotUnifiableException();
-            }
+            return createSingleSubstitutionIfNotContained(t1, (Variable) t2);
         }
         if (t1 instanceof Constant && t2 instanceof Constant) {
             if (t1.equals(t2)) {
@@ -38,21 +30,32 @@ public class Unification {
             }
         }
         if (t1 instanceof Structure && t2 instanceof Structure) {
-            final Structure s1 = (Structure) t1;
-            final Structure s2 = (Structure) t2;
-            if (s1.getFunctor().equals(s2.getFunctor()) && s1.getComponents().length == s2.getComponents().length) {
-                final SubstitutionComposition sigma = new SubstitutionComposition();
-                for (int i = 0; i < s1.getComponents().length; i++) {
-                    sigma.addSubstitution(
-                            unify(
-                                    sigma.apply(s1.getComponents()[i]), sigma.apply(s2.getComponents()[i])
-                            )
-                    );
-                }
-                return sigma.simplify();
-            } else {
-                throw new NotUnifiableException();
-            }
+            return tryUnifyStructures((Structure) t1, (Structure) t2);
+        }
+        throw new NotUnifiableException();
+    }
+
+    private static Substitution tryUnifyStructures(Structure s1, Structure s2) throws NotUnifiableException {
+        if (!s1.getFunctor().equals(s2.getFunctor())
+                || s1.getComponents().length != s2.getComponents().length) {
+            throw new NotUnifiableException();
+        }
+        final SubstitutionComposition sigma = new SubstitutionComposition();
+        for (int i = 0; i < s1.getComponents().length; i++) {
+            sigma.addSubstitution(
+                    unify(
+                            sigma.apply(s1.getComponents()[i]), sigma.apply(s2.getComponents()[i])
+                    )
+            );
+        }
+        return sigma.simplify();
+
+    }
+
+    private static Substitution createSingleSubstitutionIfNotContained(Term t1, Variable t2)
+            throws NotUnifiableException {
+        if (!t1.contains(t2)) {
+            return new SingleSubstitution(t2, t1);
         }
         throw new NotUnifiableException();
     }

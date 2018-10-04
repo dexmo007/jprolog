@@ -5,10 +5,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
 @EqualsAndHashCode(callSuper = false)
 @RequiredArgsConstructor
 @Getter

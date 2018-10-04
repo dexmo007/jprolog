@@ -7,11 +7,11 @@ import lombok.Value;
 @Value
 public class Number extends Constant {
 
-    int number;
+    int underlying;
 
     @Override
     public String toString() {
-        return Integer.toString(number);
+        return Integer.toString(underlying);
     }
 
 }
