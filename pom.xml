@@ -6,6 +6,7 @@
 
     <groupId>com.dexmohq.prolog</groupId>
     <artifactId>prolog</artifactId>
+    <name>jProlog</name>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
