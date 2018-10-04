@@ -1,4 +1,4 @@
-package com.dexmohq.prolog.test;
+package com.dexmohq.prolog.test.unification;
 
 import com.dexmohq.prolog.NotUnifiableException;
 import com.dexmohq.prolog.Unification;

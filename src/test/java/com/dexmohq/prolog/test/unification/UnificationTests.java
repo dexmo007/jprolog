@@ -1,4 +1,4 @@
-package com.dexmohq.prolog.test;
+package com.dexmohq.prolog.test.unification;
 
 import com.dexmohq.prolog.NotUnifiableException;
 import com.dexmohq.prolog.Unification;
@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class UnificationTests {
 
-    public static final Variable X = new Variable("X");
+    private static final Variable X = new Variable("X");
 
     @Test(expected = NotUnifiableException.class)
     public void testNotUnifiable_Inequality() throws NotUnifiableException {
@@ -18,9 +18,5 @@ public class UnificationTests {
         Unification.unify(t1, t2);
     }
 
-    @Test(expected = NotUnifiableException.class)
-    public void testNotUnifiable_Containing() throws NotUnifiableException {
-        Unification.unify(X, new Structure("f", X));
-    }
 
 }

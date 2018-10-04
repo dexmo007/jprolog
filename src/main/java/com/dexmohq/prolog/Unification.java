@@ -4,10 +4,12 @@ import com.dexmohq.prolog.model.Constant;
 import com.dexmohq.prolog.model.Structure;
 import com.dexmohq.prolog.model.Term;
 import com.dexmohq.prolog.model.Variable;
-import com.dexmohq.prolog.substitution.SubstitutionComposition;
 import com.dexmohq.prolog.substitution.SingleSubstitution;
 import com.dexmohq.prolog.substitution.Substitution;
+import com.dexmohq.prolog.substitution.SubstitutionComposition;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class Unification {
 
     public static Substitution unify(Term t1, Term t2) throws NotUnifiableException {

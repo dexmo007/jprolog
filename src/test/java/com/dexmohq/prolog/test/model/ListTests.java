@@ -1,19 +1,19 @@
-package com.dexmohq.prolog.test;
+package com.dexmohq.prolog.test.model;
 
 import com.dexmohq.prolog.model.Atom;
 import com.dexmohq.prolog.model.List;
 import com.dexmohq.prolog.model.Term;
 import com.dexmohq.prolog.model.Variable;
+import org.assertj.core.api.Assertions;
+import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class ListTests {
 
@@ -27,6 +27,8 @@ public class ListTests {
         assertThat(List.empty().isEmpty()).isTrue();
         assertThat(List.empty().size()).isEqualTo(0);
         assertThat(List.empty()).isEqualTo(List.empty());
+        assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> List.empty().head());
+        assertThatExceptionOfType(UnsupportedOperationException.class).isThrownBy(() -> List.empty().tail());
     }
 
     @Test
