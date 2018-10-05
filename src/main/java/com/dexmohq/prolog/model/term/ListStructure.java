@@ -1,10 +1,13 @@
-package com.dexmohq.prolog.model;
+package com.dexmohq.prolog.model.term;
 
 import com.google.common.collect.Iterators;
 import lombok.NonNull;
 
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.stream.Collectors;
+
+import static com.google.common.collect.Iterators.singletonIterator;
 
 class ListStructure extends Structure implements List {
 
@@ -54,7 +57,7 @@ class ListStructure extends Structure implements List {
 
     @Override
     public Iterator<Term> iterator() {
-        return Iterators.concat(Iterators.singletonIterator(head), tail.iterator());
+        return Iterators.concat(singletonIterator(head), tail.iterator());
     }
 
     @Override
@@ -68,6 +71,11 @@ class ListStructure extends Structure implements List {
     }
 
     @Override
+    public boolean isGroundTerm() {
+        return head.isGroundTerm() && tail.isGroundTerm();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -78,5 +86,27 @@ class ListStructure extends Structure implements List {
     @Override
     public int hashCode() {
         return Objects.hash(head, tail);
+    }
+
+    @Override
+    public String toHeadTailString() {
+        return "[" + head.toString() + "|" + tail.toString() + "]";
+    }
+
+    @Override
+    public String toHeadTailString(int headSize) {
+        if (headSize < 1) {
+            throw new IllegalArgumentException("head size must be >=1");
+        }
+        return "[" +
+                stream().limit(headSize).map(Term::toString).collect(Collectors.joining(","))
+                + "|[" +
+                stream().skip(headSize).map(Term::toString).collect(Collectors.joining(","))
+                + "]]";
+    }
+
+    @Override
+    public String toString() {
+        return "[" + stream().map(Term::toString).collect(Collectors.joining(",")) + "]";
     }
 }

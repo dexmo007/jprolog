@@ -1,6 +1,6 @@
 package com.dexmohq.prolog.substitution;
 
-import com.dexmohq.prolog.model.Term;
+import com.dexmohq.prolog.model.term.Term;
 import lombok.NonNull;
 
 import java.util.HashSet;
@@ -37,15 +37,23 @@ public class SubstitutionComposition implements Substitution {
         return this.simplify().applyOnSubstitutions(in);
     }
 
+    @Override
+    public boolean isEmpty() {
+        return simplify().isEmpty();
+    }
+
     public SubstitutionComposition addSubstitution(Substitution substitution) {
         substitutions.add(substitution);
         return this;
     }
 
-    public MultiSubstitution simplify() {
+    public Substitution simplify() {
         Set<SingleSubstitution> singleSubstitutions = new HashSet<>();
         for (Substitution substitution : substitutions) {
             singleSubstitutions = substitution.applyOnSubstitutions(singleSubstitutions);
+        }
+        if (singleSubstitutions.isEmpty()) {
+            return Substitution.none();
         }
         return new MultiSubstitution(singleSubstitutions);
     }

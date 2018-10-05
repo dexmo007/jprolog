@@ -1,4 +1,4 @@
-package com.dexmohq.prolog.model;
+package com.dexmohq.prolog.model.term;
 
 public abstract class Constant implements Term {
 
@@ -11,4 +11,8 @@ public abstract class Constant implements Term {
         return this;
     }
 
+    @Override
+    public boolean isGroundTerm() {
+        return true;
+    }
 }

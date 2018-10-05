@@ -2,9 +2,9 @@ package com.dexmohq.prolog.test.unification;
 
 import com.dexmohq.prolog.NotUnifiableException;
 import com.dexmohq.prolog.Unification;
-import com.dexmohq.prolog.model.Atom;
-import com.dexmohq.prolog.model.Structure;
-import com.dexmohq.prolog.model.Variable;
+import com.dexmohq.prolog.model.term.Atom;
+import com.dexmohq.prolog.model.term.Structure;
+import com.dexmohq.prolog.model.term.Variable;
 import org.junit.Test;
 
 public class UnificationTests {

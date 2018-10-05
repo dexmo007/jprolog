@@ -1,11 +1,9 @@
 package com.dexmohq.prolog.test.model;
 
-import com.dexmohq.prolog.model.Atom;
-import com.dexmohq.prolog.model.List;
-import com.dexmohq.prolog.model.Term;
-import com.dexmohq.prolog.model.Variable;
-import org.assertj.core.api.Assertions;
-import org.junit.Assert;
+import com.dexmohq.prolog.model.term.Atom;
+import com.dexmohq.prolog.model.term.List;
+import com.dexmohq.prolog.model.term.Term;
+import com.dexmohq.prolog.model.term.Variable;
 import org.junit.Test;
 
 import java.util.*;

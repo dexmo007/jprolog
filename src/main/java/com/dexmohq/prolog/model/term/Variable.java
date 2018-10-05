@@ -1,4 +1,4 @@
-package com.dexmohq.prolog.model;
+package com.dexmohq.prolog.model.term;
 
 import lombok.NonNull;
 import lombok.Value;
@@ -19,6 +19,11 @@ public class Variable implements Term {
             return substitution;
         }
         return this;
+    }
+
+    @Override
+    public boolean isGroundTerm() {
+        return false;
     }
 
     @Override

@@ -1,6 +1,9 @@
-package com.dexmohq.prolog.model;
+package com.dexmohq.prolog.model.term;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;
@@ -43,6 +46,12 @@ public class Structure implements Term {
         return new Structure(functor, stream(components)
                 .map(c -> c.substitute(var, substitution))
                 .toArray(Term[]::new));
+    }
+
+    @Override
+    public boolean isGroundTerm() {
+        return stream(components)
+                .allMatch(Term::isGroundTerm);
     }
 
     @Override

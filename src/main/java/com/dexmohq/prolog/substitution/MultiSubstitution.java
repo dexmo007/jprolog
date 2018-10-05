@@ -1,6 +1,6 @@
 package com.dexmohq.prolog.substitution;
 
-import com.dexmohq.prolog.model.Term;
+import com.dexmohq.prolog.model.term.Term;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +32,11 @@ public class MultiSubstitution implements Substitution {
                 .collect(Collectors.toSet());
         singleSubstitutions.addAll(substitutions);
         return singleSubstitutions;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return substitutions.isEmpty();
     }
 
     @Override

@@ -2,10 +2,10 @@ package com.dexmohq.prolog.test.unification;
 
 import com.dexmohq.prolog.NotUnifiableException;
 import com.dexmohq.prolog.Unification;
-import com.dexmohq.prolog.model.Atom;
-import com.dexmohq.prolog.model.Number;
-import com.dexmohq.prolog.model.Structure;
-import com.dexmohq.prolog.model.Variable;
+import com.dexmohq.prolog.model.term.Atom;
+import com.dexmohq.prolog.model.term.Number;
+import com.dexmohq.prolog.model.term.Structure;
+import com.dexmohq.prolog.model.term.Variable;
 import com.dexmohq.prolog.substitution.SingleSubstitution;
 import com.dexmohq.prolog.substitution.Substitution;
 import org.junit.Test;

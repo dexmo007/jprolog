@@ -1,4 +1,4 @@
-package com.dexmohq.prolog.model;
+package com.dexmohq.prolog.model.term;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;

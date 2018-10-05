@@ -1,4 +1,4 @@
-package com.dexmohq.prolog.model;
+package com.dexmohq.prolog.model.term;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -53,5 +53,15 @@ class EmptyList extends Atom implements List {
     @Override
     public int hashCode() {
         return 0;
+    }
+
+    @Override
+    public String toHeadTailString() {
+        return toString();
+    }
+
+    @Override
+    public String toHeadTailString(int headSize) {
+        return toString();
     }
 }

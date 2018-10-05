@@ -1,6 +1,6 @@
 package com.dexmohq.prolog.substitution;
 
-import com.dexmohq.prolog.model.Term;
+import com.dexmohq.prolog.model.term.Term;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +19,11 @@ public class NoSubstitution implements Substitution {
     @Override
     public Set<SingleSubstitution> applyOnSubstitutions(Set<SingleSubstitution> in) {
         return in;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return true;
     }
 
     @Override

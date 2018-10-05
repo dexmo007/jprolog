@@ -1,4 +1,4 @@
-package com.dexmohq.prolog.model;
+package com.dexmohq.prolog.model.term;
 
 import lombok.NonNull;
 
@@ -26,6 +26,10 @@ public interface List extends Term, Iterable<Term> {
 
     @Override
     List substitute(Variable var, Term substitution);
+
+    String toHeadTailString(int headSize);
+
+    String toHeadTailString();
 
     default Stream<Term> stream() {
         return StreamSupport.stream(spliterator(), false);

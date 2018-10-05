@@ -1,7 +1,7 @@
 package com.dexmohq.prolog.substitution;
 
-import com.dexmohq.prolog.model.Term;
-import com.dexmohq.prolog.model.Variable;
+import com.dexmohq.prolog.model.term.Term;
+import com.dexmohq.prolog.model.term.Variable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +29,11 @@ public class SingleSubstitution implements Substitution {
                 .collect(Collectors.toSet());
         out.add(this);
         return out;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
     }
 
     public String innerToString() {

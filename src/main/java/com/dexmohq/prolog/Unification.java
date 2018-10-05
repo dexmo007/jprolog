@@ -1,9 +1,9 @@
 package com.dexmohq.prolog;
 
-import com.dexmohq.prolog.model.Constant;
-import com.dexmohq.prolog.model.Structure;
-import com.dexmohq.prolog.model.Term;
-import com.dexmohq.prolog.model.Variable;
+import com.dexmohq.prolog.model.term.Constant;
+import com.dexmohq.prolog.model.term.Structure;
+import com.dexmohq.prolog.model.term.Term;
+import com.dexmohq.prolog.model.term.Variable;
 import com.dexmohq.prolog.substitution.SingleSubstitution;
 import com.dexmohq.prolog.substitution.Substitution;
 import com.dexmohq.prolog.substitution.SubstitutionComposition;
