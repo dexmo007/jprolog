@@ -36,6 +36,14 @@ public class SingleSubstitution implements Substitution {
         return false;
     }
 
+    @Override
+    public Substitution dropAnonymous() {
+        if (source.isAnonymous()) {
+            return Substitution.none();
+        }
+        return this;
+    }
+
     public String innerToString() {
         return source.getName() + "/" + target;
     }

@@ -26,6 +26,10 @@ public class Variable implements Term {
         return false;
     }
 
+    public boolean isAnonymous() {
+        return name.equals("_");
+    }
+
     @Override
     public String toString() {
         return name;

@@ -6,9 +6,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toSet;
 
 @RequiredArgsConstructor
 @Getter
@@ -29,7 +29,7 @@ public class MultiSubstitution implements Substitution {
     public Set<SingleSubstitution> applyOnSubstitutions(Set<SingleSubstitution> in) {
         Set<SingleSubstitution> singleSubstitutions = in.stream()
                 .map(s -> new SingleSubstitution(s.getSource(), this.apply(s.getTarget())))
-                .collect(Collectors.toSet());
+                .collect(toSet());
         singleSubstitutions.addAll(substitutions);
         return singleSubstitutions;
     }
@@ -37,6 +37,20 @@ public class MultiSubstitution implements Substitution {
     @Override
     public boolean isEmpty() {
         return substitutions.isEmpty();
+    }
+
+    @Override
+    public Substitution dropAnonymous() {
+        final Set<SingleSubstitution> singleSubstitutions = substitutions.stream()
+                .filter(s -> !s.getSource().isAnonymous())
+                .collect(toSet());
+        if (singleSubstitutions.isEmpty()) {
+            return Substitution.none();
+        }
+        if (singleSubstitutions.size() == 1) {
+            return singleSubstitutions.iterator().next();
+        }
+        return new MultiSubstitution(singleSubstitutions);
     }
 
     @Override

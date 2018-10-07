@@ -27,6 +27,11 @@ public class NoSubstitution implements Substitution {
     }
 
     @Override
+    public Substitution dropAnonymous() {
+        return this;
+    }
+
+    @Override
     public String toString() {
         return "{}";
     }

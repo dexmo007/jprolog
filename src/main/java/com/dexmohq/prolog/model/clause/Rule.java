@@ -15,6 +15,11 @@ public class Rule implements Clause {
     Literal conclusion;
     Literal[] premise;
 
+    public Rule(Literal conclusion, Literal... premise) {
+        this.conclusion = conclusion;
+        this.premise = premise;
+    }
+
     @Override
     public Substitution unifyWith(Literal literal) throws NotUnifiableException {
         return Unification.unify(conclusion, literal);
@@ -22,7 +27,7 @@ public class Rule implements Clause {
 
     @Override
     public Literal[] applyRight(Substitution substitution) {
-        return stream(premise).map(substitution).toArray(Literal[]::new);
+        return stream(premise).map(substitution).map(term -> Literal.from((Structure) term)).toArray(Literal[]::new);
     }
 
     @Override

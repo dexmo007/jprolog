@@ -16,4 +16,6 @@ public interface Substitution extends Function<Term, Term> {
     }
 
     boolean isEmpty();
+
+    Substitution dropAnonymous();
 }

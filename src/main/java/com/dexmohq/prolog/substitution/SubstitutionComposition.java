@@ -59,6 +59,11 @@ public class SubstitutionComposition implements Substitution {
     }
 
     @Override
+    public Substitution dropAnonymous() {
+        return simplify().dropAnonymous();
+    }
+
+    @Override
     public String toString() {
         if (substitutions.isEmpty()) {
             return "{}";

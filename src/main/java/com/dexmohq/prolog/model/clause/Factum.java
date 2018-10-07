@@ -3,13 +3,18 @@ package com.dexmohq.prolog.model.clause;
 import com.dexmohq.prolog.NotUnifiableException;
 import com.dexmohq.prolog.Unification;
 import com.dexmohq.prolog.model.term.Structure;
+import com.dexmohq.prolog.model.term.Term;
 import com.dexmohq.prolog.substitution.Substitution;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Factum implements Clause {
 
     private final Structure fact;
+
+    public Factum(String functor, Term... terms) {
+        this.fact = new Structure(functor, terms);
+    }
 
     @Override
     public Substitution unifyWith(Literal literal) throws NotUnifiableException {
