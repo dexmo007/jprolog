@@ -1,5 +1,6 @@
 package com.dexmohq.prolog.test.parse;
 
+import com.dexmohq.prolog.parse.ParseException;
 import com.dexmohq.prolog.parse.TermParser;
 import lombok.RequiredArgsConstructor;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class IllegalTermTests {
         );
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = ParseException.class)
     public void test() {
         TermParser.parse(s);
     }
